@@ -18,10 +18,16 @@ namespace Codevelop.Shared.Entity
 
         public string SettingsDescription { get; set; }
 
-        public int MinimumTemp { get; set; }
+        public int FrostProtectionTemp { get; set; }
 
-        public int TargetTemp { get; set; }
+        public int TargetTempSolar { get; set; }
 
+
+        public int TargetTempPower { get; set; }
+
+        public int PumpStartMinDelta { get; set; }
+
+        public DateTimeOffset? Away { get; set; }
 
         public List<DateTimeOffset> TargetTempAt { get; set; }
 

@@ -8,7 +8,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="56,91,0,0" TextWrapping="Wrap" Text="Sample text" VerticalAlignment="Top" />
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="100,84,0,0" TextWrapping="Wrap" Text="Tick-Tock" VerticalAlignment="Top" />
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,84,0,0" TextWrapping="Wrap" Text="Timer Count:" VerticalAlignment="Top"/>
+        <ListBox x:Name="serverFeed" Margin="4,109,14,0" Height="521"/>
+        <Button x:Name="button" Content="Connect" HorizontalAlignment="Left" Margin="281,77,0,0" VerticalAlignment="Top" Click="button_Click"/>
 
     </Grid>
 </Page>

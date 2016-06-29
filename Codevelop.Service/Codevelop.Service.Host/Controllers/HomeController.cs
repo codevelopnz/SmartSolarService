@@ -26,5 +26,19 @@ namespace Codevelop.Service.Host.Controllers
 
             return View();
         }
+
+        public ActionResult RegisterDevice()
+        {
+            ViewBag.Message = "Register Controller";
+
+            return View();
+        }
+
+        public ActionResult LiveFeed
+            ()
+        {
+            return View();
+        }
+
     }
 }
