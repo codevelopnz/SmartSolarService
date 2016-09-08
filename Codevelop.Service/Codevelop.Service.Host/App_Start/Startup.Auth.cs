@@ -6,14 +6,45 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Codevelop.Service.Host.Models;
+using Microsoft.Owin.Security.OAuth;
+using Codevelop.Service.Host.App_Start;
+using System.Configuration;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Codevelop.Service.Host
 {
     public partial class Startup
     {
+        public Startup()
+        {
+            PublicClientId = "self";
+
+            UserManagerFactory = () => new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+
+            OAuthOptions = new OAuthAuthorizationServerOptions
+            {
+                TokenEndpointPath = new PathString("/Token"),
+                Provider = new ApplicationOAuthProvider(PublicClientId, UserManagerFactory),
+                AuthorizeEndpointPath = new PathString("/api/ExternalAccount/ExternalLogin"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+                AllowInsecureHttp = true
+            };
+        }
+
+        public static Func<UserManager<ApplicationUser>> UserManagerFactory { get; set; }
+        public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
+        public static string PublicClientId { get; private set; }
+
+
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+            //app.Map("/api", inner =>
+            //{
+            //    inner.UseWebApi(Configuration);
+            //});
+
+
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
@@ -44,6 +75,21 @@ namespace Codevelop.Service.Host
             // Once you check this option, your second step of verification during the login process will be remembered on the device where you logged in from.
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
+
+
+            // Enable the application to use bearer tokens to authenticate users
+            app.UseOAuthBearerTokens(OAuthOptions);
+
+
+
+
+
+
+
+
+
+
+
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(

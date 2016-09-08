@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Ping";
+}
+
+<h2>Ping</h2>
+
+@section scripts
+    {
+    <script type="text/javascript">
+
+
+
+        $(function () {
+
+
+            $.ajax({
+                type: 'GET',
+                url: '../api/deviceFeed', 
+                contentType: "application/vnd.api+json",
+                //headers: headers
+            }).done(function (data) {
+
+                console.log("success: " + data);
+            })
+                 .fail(function (err) {
+                     console.log("api called with error" + err.statusText);
+                 });
+
+
+
+
+
+            console.log('Attempting OAuth Call');
+
+            var tokenKey = 'accessToken';
+
+            var loginData = {
+                grant_type: 'password',
+                username: 'testUser',
+                password: 'Password!'
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '../Token',
+                data: loginData
+            }).done(function (data) {
+
+                // Cache the access token in session storage.
+                //sessionStorage.setItem(tokenKey, data.access_token);
+
+                var headers = {};
+                headers.Authorization = 'Bearer ' + data.access_token;
+
+                $.ajax({
+                    type: 'GET',
+                    url: '../api/deviceFeed', 
+                    contentType: "application/vnd.api+json",
+                    headers: headers
+                }).done(function (data) {
+
+                    console.log("success: " + data);
+                })
+                  .fail(function (err) {
+                      console.log("api called with error" + err.statusText);
+                  });
+
+
+
+            }).fail(function (err) {
+
+                console.log('Auth failed with: ' + err);
+            });
+        });
+
+    </script>
+}

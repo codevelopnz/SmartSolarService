@@ -34,8 +34,12 @@ namespace Codevelop.Service.Host.Controllers
             return View();
         }
 
-        public ActionResult LiveFeed
-            ()
+        public ActionResult LiveFeed()
+        {
+            return View();
+        }
+
+        public ActionResult Ping()
         {
             return View();
         }
