@@ -49,7 +49,7 @@ namespace Codevelop.Service.Host.Context
         }
 
         // Only static methods are allowed in calls into base class c'tors.
-        private static DbConnection CreateDDRConnection(ShardMap shardMap,T shardingKey,string connectionStr)
+        private static DbConnection CreateDDRConnection(ShardMap shardMap, T shardingKey, string connectionStr)
         {
             // No initialization
             Database.SetInitializer<CodevelopDBContext<T>>(null);
@@ -58,5 +58,6 @@ namespace Codevelop.Service.Host.Context
             SqlConnection conn = shardMap.OpenConnectionForKey<T>(shardingKey, connectionStr, ConnectionOptions.Validate);
             return conn;
         }
+
     }
 }

@@ -16,7 +16,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: '../api/deviceFeed', 
+                url: '../api/deviceFeed',
                 contentType: "application/vnd.api+json",
                 //headers: headers
             }).done(function (data) {
@@ -47,7 +47,7 @@
                 data: loginData
             }).done(function (data) {
 
-                // Cache the access token in session storage.
+                // TODO Cache the access token in session storage.
                 //sessionStorage.setItem(tokenKey, data.access_token);
 
                 var headers = {};
@@ -55,7 +55,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '../api/deviceFeed', 
+                    url: '../api/deviceFeed',
                     contentType: "application/vnd.api+json",
                     headers: headers
                 }).done(function (data) {

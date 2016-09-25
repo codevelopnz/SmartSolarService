@@ -227,6 +227,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\CodevelopDBContext.cs" />
+    <Compile Include="Context\CodevelopDBInitialiser.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Controllers\DeviceFeedController.cs" />

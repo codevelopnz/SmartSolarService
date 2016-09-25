@@ -14,10 +14,11 @@ namespace Codevelop.Service.Host.Controllers
         
         public IEnumerable<string> Get()
         {
-
-            var x = ClaimsPrincipal.Current.Claims;
-            var y = User.Identity.IsAuthenticated;
             var layers = new List<string>();
+            var x = ClaimsPrincipal.Current.Claims;
+            if (User.Identity.IsAuthenticated)
+                layers.Add("Authenticated");
+            
             return layers;
         }
 
