@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Codevelop.Service.Host.Context;
 
 namespace Codevelop.Service.Host.Models
 {
@@ -23,11 +24,15 @@ namespace Codevelop.Service.Host.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, ApplicationDbContextInitialiser>());
+            //Database.SetInitializer(new ApplicationDbContextInitialiser());
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+       
     }
 }
