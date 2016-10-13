@@ -13,7 +13,7 @@ namespace Codevelop.Service.Host
             //app.UseCors(CorsOptions.AllowAll);
 
             var hubConfiguration = new HubConfiguration();
-            hubConfiguration.EnableDetailedErrors = true;
+            //hubConfiguration.EnableDetailedErrors = true;
             hubConfiguration.EnableJavaScriptProxies = true;
             app.MapSignalR(hubConfiguration);
         }

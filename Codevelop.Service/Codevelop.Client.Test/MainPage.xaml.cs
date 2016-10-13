@@ -1,13 +1,17 @@
 ﻿using Codevelop.Client.Test.Helpers;
+using Codevelop.Shared.Entity;
 using Microsoft.AspNet.SignalR.Client;
 
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
@@ -32,11 +36,12 @@ namespace Codevelop.Client.Test
         private HubConnection _hubConnection;
         private IHubProxy _hubProxy;
         private bool _connectionStable;
+        private Guid _deviceId;
 
         private readonly CoreDispatcher _dispatcher;
 
 
-       // private const string connectionString = "HostName=TgaMeetup.azure-devices.net;DeviceId=device88b92e2f1e13454d8df943eed76d60dc;SharedAccessKey=dUTQu+fDUr0F0FBWwjzvRel1JkI+qHo/PJ4hLLw5LGQ=;";
+        // private const string connectionString = "HostName=TgaMeetup.azure-devices.net;DeviceId=device88b92e2f1e13454d8df943eed76d60dc;SharedAccessKey=dUTQu+fDUr0F0FBWwjzvRel1JkI+qHo/PJ4hLLw5LGQ=;";
         public MainPage()
         {
             this.InitializeComponent();
@@ -56,23 +61,23 @@ namespace Codevelop.Client.Test
             //await WaitForConnection();
 
             // TODO get device MAC address for now a guid will do 
-            var deviceId = Guid.NewGuid();
+            _deviceId = Guid.NewGuid();
 
             try
             {
-                _hubProxy.Invoke("DeviceConnect", deviceId);
+                _hubProxy.Invoke("DeviceConnect", _deviceId);
             }
             catch (Exception ex)
             {
 
-                LogMessage("Invoke Failed : "+ ex.Message);
+                LogMessage("Invoke Failed : " + ex.Message);
             }
-            
+
         }
 
         public async Task Start()
         {
-            _hubConnection = new HubConnection("http://192.168.1.155/CodevelopService");
+            _hubConnection = new HubConnection("http://192.168.1.168/CodevelopService");
             //_hubConnection = new HubConnection(@"http://smartsolar.azurewebsites.net");
             var writer = new DebugTextWriter();
             _hubConnection.TraceLevel = TraceLevels.All;
@@ -80,10 +85,10 @@ namespace Codevelop.Client.Test
             _hubConnection.Error += _hubConnection_Error;
             _hubConnection.StateChanged += _hubConnection_StateChanged;
 
-           
+
             // set up backchannel
-            _hubProxy = _hubConnection.CreateHubProxy("DeviceFeed");
-            
+            _hubProxy = _hubConnection.CreateHubProxy("DeviceFeedHub");
+
             _hubProxy.On<string>("hello", message =>
                 LogMessage(message)
             );
@@ -91,15 +96,20 @@ namespace Codevelop.Client.Test
 
             LogMessage("Starting");
             await _hubConnection.Start();
+
+
+           /* MqttClient client = new MqttClient("192.168.1.168");
+            client.Connect(_deviceId.ToString());
+            client.Publish("/home/temperature", Encoding.UTF8.GetBytes("Starting"), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);*/
         }
 
 
-            void _hubConnection_StateChanged(StateChange obj)
+        void _hubConnection_StateChanged(StateChange obj)
         {
 
             LogMessage(_hubConnection.State.ToString());
 
-            if (_hubConnection.State == ConnectionState.Connected )
+            if (_hubConnection.State == ConnectionState.Connected)
             {
                 _connectionStable = true;
             }
@@ -109,7 +119,7 @@ namespace Codevelop.Client.Test
         {
             while (!_connectionStable)
             {
-               await Task.Delay(100);
+                await Task.Delay(100);
             }
             LogMessage("Connection stable!");
         }
@@ -126,7 +136,7 @@ namespace Codevelop.Client.Test
 
         private void DispatcherTimer_Tick(object sender, object e)
         {
-            
+
 
             textBlock.Text = _counter.ToString();
             _counter++;
@@ -134,7 +144,22 @@ namespace Codevelop.Client.Test
             try
             {
                 if (_hubConnection.State == ConnectionState.Connected)
+                {
                     _hubProxy.Invoke("Hello", textBlock.Text);
+
+                    var feedItem = new DeviceFeed
+                    {
+                        DeviceId = _deviceId,
+                        IsHeating = false,
+                        IsPumpOn = true,
+                        PanelTemp = 78,
+                        TankLowerTemp = 45,
+                        TankUpperTemp = 63,
+                        Timestamp = DateTimeOffset.Now
+                   
+                    };
+                    _hubProxy.Invoke("SendFeedData", feedItem);
+                }
             }
             catch (Exception ex)
             {
@@ -149,6 +174,6 @@ namespace Codevelop.Client.Test
             ConnectToServices();
         }
 
-        
+
     }
 }

@@ -1,9 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Codevelop.Shared.Entity
 {
     public class DeviceFeed
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid FeedId { get; set; }
         public Guid DeviceId{ get; set; }
 
@@ -11,7 +15,7 @@ namespace Codevelop.Shared.Entity
 
         public bool IsHeating { get; set; }
 
-        public int IsPumpOn { get; set; }
+        public bool IsPumpOn { get; set; }
 
         public int TankLowerTemp { get; set; }
 

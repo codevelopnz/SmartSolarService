@@ -5,14 +5,30 @@ using System.Web;
 using Microsoft.AspNet.SignalR;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Codevelop.Shared.Entity;
+using Codevelop.Service.Host.App_Start;
+using Ninject;
+using Codevelop.Service.Interfaces;
 
 namespace Codevelop.Service.Host.Hubs
 {
-    public class DeviceFeed: Hub
+    public class DeviceFeedHub: Hub
     {
+        [Inject]
+        public IDeviceRepository DeviceRepository { get; set; }
+
         public void Hello(string message)
         {
             Clients.All.Hello(message);
+        }
+
+        public void SendFeedData(DeviceFeed feed)
+        {
+            Debug.Write("SendFeedData");
+
+            DeviceRepository.AddDeviceFeed(feed);
+
+
         }
 
         public override Task OnConnected()
