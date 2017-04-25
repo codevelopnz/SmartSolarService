@@ -16,5 +16,11 @@ namespace Codevelop.Service.Host.Controllers
         {
             return View();
         }
+
+
+        public ActionResult Summary()
+        {
+            return View();
+        }
     }
 }

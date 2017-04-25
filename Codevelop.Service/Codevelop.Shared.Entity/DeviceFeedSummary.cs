@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Codevelop.Shared.Entity
 {
@@ -7,6 +8,7 @@ namespace Codevelop.Shared.Entity
     /// </summary>
     public class DeviceFeedSummary
     {
+        [Key]
         public Guid FeedSummaryId { get; set; }
         public Guid DeviceId{ get; set; }
       

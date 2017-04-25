@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codevelop.Service.Entity", "Codevelop.Service.Entity\Codevelop.Service.Entity.csproj", "{084012C2-D8A8-4284-8EAB-8AE89A02AF55}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codevelop.Service.Host", "Codevelop.Service.Host\Codevelop.Service.Host.csproj", "{9F22EACB-3BEC-4982-9C1F-D0127983AC64}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codevelop.Client.Test", "Codevelop.Client.Test\Codevelop.Client.Test.csproj", "{93D3F507-403A-4AD1-91DC-F0F559B3F58A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codevelop.Shared.Entity", "Codevelop.Shared.Entity\Codevelop.Shared.Entity.csproj", "{A0161095-E648-4784-BC9F-AE24AA918510}"
 EndProject
@@ -59,28 +57,6 @@ Global
 		{9F22EACB-3BEC-4982-9C1F-D0127983AC64}.Release|x64.Build.0 = Release|Any CPU
 		{9F22EACB-3BEC-4982-9C1F-D0127983AC64}.Release|x86.ActiveCfg = Release|Any CPU
 		{9F22EACB-3BEC-4982-9C1F-D0127983AC64}.Release|x86.Build.0 = Release|Any CPU
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|Any CPU.Build.0 = Debug|x86
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|Any CPU.Deploy.0 = Debug|x86
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|ARM.ActiveCfg = Debug|ARM
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|ARM.Build.0 = Debug|ARM
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|ARM.Deploy.0 = Debug|ARM
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|x64.ActiveCfg = Debug|x64
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|x64.Build.0 = Debug|x64
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|x64.Deploy.0 = Debug|x64
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|x86.ActiveCfg = Debug|x86
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|x86.Build.0 = Debug|x86
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|x86.Deploy.0 = Debug|x86
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|Any CPU.ActiveCfg = Release|x86
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|ARM.ActiveCfg = Release|ARM
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|ARM.Build.0 = Release|ARM
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|ARM.Deploy.0 = Release|ARM
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|x64.ActiveCfg = Release|x64
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|x64.Build.0 = Release|x64
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|x64.Deploy.0 = Release|x64
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|x86.ActiveCfg = Release|x86
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|x86.Build.0 = Release|x86
-		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|x86.Deploy.0 = Release|x86
 		{A0161095-E648-4784-BC9F-AE24AA918510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A0161095-E648-4784-BC9F-AE24AA918510}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0161095-E648-4784-BC9F-AE24AA918510}.Debug|ARM.ActiveCfg = Debug|Any CPU

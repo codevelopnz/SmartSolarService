@@ -40,9 +40,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeviceFeed.cs" />
+    <Compile Include="DeviceFeedReportSummaryDay.cs" />
+    <Compile Include="DeviceFeedReportSummary.cs" />
     <Compile Include="DeviceFeedSummary.cs" />
     <Compile Include="DeviceSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="DeviceFeedReportSummary.cs.d.ts">
+      <DependentUpon>DeviceFeedReportSummary.cs</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="DeviceFeedReportSummaryDay.cs.d.ts">
+      <DependentUpon>DeviceFeedReportSummaryDay.cs</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
