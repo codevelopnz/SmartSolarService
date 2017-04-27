@@ -58,12 +58,20 @@
 
         });
 
+        var nestedByDay = d3.nest()
+            .key(function (d) {
+                // Build a new date from just the year, month, date - chopping off the time
+                // (d3 will convert it to a string, being the key - but we'll convert it back to a Date later)
+                 return new Date(d.Date.getFullYear(), d.Date.getMonth(), d.Date.getDate());
+            })
+            .entries(data);
+
         var dayLabels = svg.selectAll(".dayLabel")
-            .data(data)
+            .data(nestedByDay)
             .enter().append("text")
             .text(function (d) {
-                return monthNameFormat(d.Date); // todo d3.nest and .key?
-                //return d;
+                // (need to turn it back into a Date because d3 makes all nest keys strings)
+                return monthNameFormat(new Date(d.key)); 
             })
             .attr("x", 0)
             .attr("y", function (d, i) { return i * gridSize; })
