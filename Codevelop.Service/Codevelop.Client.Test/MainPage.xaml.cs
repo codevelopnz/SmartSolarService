@@ -77,8 +77,8 @@ namespace Codevelop.Client.Test
 
         public async Task Start()
         {
-            //_hubConnection = new HubConnection("http://192.168.1.168/CodevelopService");
-            _hubConnection = new HubConnection(@"http://smartsolar.azurewebsites.net");
+            _hubConnection = new HubConnection("http://localhost/CodevelopService");
+            //_hubConnection = new HubConnection(@"http://smartsolar.azurewebsites.net");
             var writer = new DebugTextWriter();
             _hubConnection.TraceLevel = TraceLevels.All;
             _hubConnection.TraceWriter = writer;
@@ -145,7 +145,7 @@ namespace Codevelop.Client.Test
             {
                 if (_hubConnection.State == ConnectionState.Connected)
                 {
-                    _hubProxy.Invoke("Hello", textBlock.Text);
+                    //_hubProxy.Invoke("Hello", textBlock.Text);
 
                     var feedItem = new DeviceFeed
                     {

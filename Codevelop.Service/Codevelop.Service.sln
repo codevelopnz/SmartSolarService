@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codevelop.Service.Entity", "Codevelop.Service.Entity\Codevelop.Service.Entity.csproj", "{084012C2-D8A8-4284-8EAB-8AE89A02AF55}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codevelop.Service.Interfaces", "Codevelop.Service.Interfaces\Codevelop.Service.Interfaces.csproj", "{8E699614-5569-4768-8F4B-F1367DDCEEB1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codevelop.Service.Repository", "Codevelop.Service.Repository\Codevelop.Service.Repository.csproj", "{13D8F011-E49A-49B2-A940-75F7320EA4C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codevelop.Client.Test", "Codevelop.Client.Test\Codevelop.Client.Test.csproj", "{93D3F507-403A-4AD1-91DC-F0F559B3F58A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,26 @@ Global
 		{13D8F011-E49A-49B2-A940-75F7320EA4C6}.Release|x64.Build.0 = Release|Any CPU
 		{13D8F011-E49A-49B2-A940-75F7320EA4C6}.Release|x86.ActiveCfg = Release|Any CPU
 		{13D8F011-E49A-49B2-A940-75F7320EA4C6}.Release|x86.Build.0 = Release|Any CPU
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|ARM.ActiveCfg = Debug|ARM
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|ARM.Build.0 = Debug|ARM
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|ARM.Deploy.0 = Debug|ARM
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|x64.ActiveCfg = Debug|x64
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|x64.Build.0 = Debug|x64
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|x64.Deploy.0 = Debug|x64
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|x86.ActiveCfg = Debug|x86
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|x86.Build.0 = Debug|x86
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Debug|x86.Deploy.0 = Debug|x86
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|Any CPU.ActiveCfg = Release|x86
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|ARM.ActiveCfg = Release|ARM
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|ARM.Build.0 = Release|ARM
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|ARM.Deploy.0 = Release|ARM
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|x64.ActiveCfg = Release|x64
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|x64.Build.0 = Release|x64
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|x64.Deploy.0 = Release|x64
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|x86.ActiveCfg = Release|x86
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|x86.Build.0 = Release|x86
+		{93D3F507-403A-4AD1-91DC-F0F559B3F58A}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

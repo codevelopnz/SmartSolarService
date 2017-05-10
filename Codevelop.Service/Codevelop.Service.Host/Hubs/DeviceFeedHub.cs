@@ -26,8 +26,9 @@ namespace Codevelop.Service.Host.Hubs
         {
             Debug.Write("SendFeedData");
 
-            DeviceRepository.AddDeviceFeed(feed);
-
+            // AC TODO add this back in DeviceRepository.AddDeviceFeed(feed);
+            //Clients.Group(feed.DeviceId.ToString()).SendFeedData(feed);
+            Clients.All.SendFeedData(feed); //TODO need to only do correct ones.. web client needs to belong to this same group
 
         }
 
