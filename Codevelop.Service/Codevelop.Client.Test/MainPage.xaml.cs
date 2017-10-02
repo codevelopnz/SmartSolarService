@@ -39,7 +39,7 @@ namespace Codevelop.Client.Test
         private Guid _deviceId;
 
         private readonly CoreDispatcher _dispatcher;
-
+        public static Random _random = new Random();
 
         // private const string connectionString = "HostName=TgaMeetup.azure-devices.net;DeviceId=device88b92e2f1e13454d8df943eed76d60dc;SharedAccessKey=dUTQu+fDUr0F0FBWwjzvRel1JkI+qHo/PJ4hLLw5LGQ=;";
         public MainPage()
@@ -152,9 +152,9 @@ namespace Codevelop.Client.Test
                         DeviceId = _deviceId,
                         IsHeating = false,
                         IsPumpOn = true,
-                        PanelTemp = 78,
-                        TankLowerTemp = 45,
-                        TankUpperTemp = 63,
+                        PanelTemp = _random.Next(20,78),
+                        TankLowerTemp = _random.Next(30, 55),
+                        TankUpperTemp = _random.Next(55, 75),
                         Timestamp = DateTimeOffset.Now
                    
                     };
